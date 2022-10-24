@@ -49,10 +49,7 @@ public class employeeController {
         return employeeService.findEmployeeByLastName(lastName);
     }
 
-    @DeleteMapping("/id")
-    public void removeEmployee(@PathVariable Long id){
-        employeeService.deleteEmployeeById(id);
-    }
+
 
     @PutMapping("/update")
     public Employee updateEmployee(@RequestBody Employee employee){
@@ -61,7 +58,7 @@ public class employeeController {
     }
 
     @DeleteMapping("/{id}")
-    public String deleteEmployeeById(@PathVariable Long id){
+    public String delEmployeeById(@PathVariable Long id){
         return employeeService.deleteEmployeeById(id);
     }
 
