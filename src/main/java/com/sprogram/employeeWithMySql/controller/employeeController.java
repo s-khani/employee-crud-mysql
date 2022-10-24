@@ -39,9 +39,9 @@ public class employeeController {
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
         Employee em =  employeeService.findEmployeeById(id);
         if (em == null){
-            return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<Employee>(em,HttpStatus.OK);
+        return new ResponseEntity<>(em,HttpStatus.OK);
     }
 
     @GetMapping("/{lastName}")
