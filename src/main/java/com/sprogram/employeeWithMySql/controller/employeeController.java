@@ -31,17 +31,17 @@ public class employeeController {
         return employeeService.saveAllEmployees(employees);
     }
      @GetMapping()
-    public List<Employee> getAllEmployees(List<Employee> employees){
+    public List<Employee> getAllEmployees(){
         return employeeService.findAllEmployees();
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("employeeById/{id}")
     public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
         Employee em =  employeeService.findEmployeeById(id);
         if (em == null){
-            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+            return new ResponseEntity<Employee>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(em,HttpStatus.OK);
+        return new ResponseEntity<Employee>(em,HttpStatus.OK);
     }
 
     @GetMapping("/{lastName}")
@@ -56,7 +56,7 @@ public class employeeController {
 
     @PutMapping("/update")
     public Employee updateEmployee(@RequestBody Employee employee){
-      return  employeeService.updateEmployee(updateEmployee(employee));
+      return  employeeService.updateEmployee(employee);
 
     }
 
