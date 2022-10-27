@@ -15,33 +15,33 @@ public class EmployeeService {
         this.employeeRepository = employeeRepository;
     }
 
-    public Employee saveEmployee(Employee employee){
+    public Employee saveEmployee(Employee employee) {
         return employeeRepository.save(employee);
     }
 
-    public List<Employee> saveAllEmployees(List<Employee> employees){
+    public List<Employee> saveAllEmployees(List<Employee> employees) {
         return employeeRepository.saveAll(employees);
     }
 
-    public List<Employee> findAllEmployees(){
+    public List<Employee> findAllEmployees() {
         return employeeRepository.findAll();
     }
 
-    public Employee findEmployeeById(Long id){
+    public Employee findEmployeeById(Long id) {
         return employeeRepository.findById(id).orElse(null);
     }
 
-    public Employee findEmployeeByLastName(String lastName){
+    public Employee findEmployeeByLastName(String lastName) {
         return employeeRepository.findByLastName(lastName);
     }
 
 
-    public String deleteEmployeeById(Long id){
+    public String deleteEmployeeById(Long id) {
         employeeRepository.deleteById(id);
         return "Employee was deleted " + id;
     }
 
-    public Employee updateEmployee(Employee employee){
+    public Employee updateEmployee(Employee employee) {
         Employee existingEmployee = employeeRepository.findById(employee.getId()).orElse(null);
         existingEmployee.setFirstName(employee.getFirstName());
         existingEmployee.setLastName((employee.getLastName()));

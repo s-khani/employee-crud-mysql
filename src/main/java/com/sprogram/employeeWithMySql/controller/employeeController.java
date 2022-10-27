@@ -16,49 +16,50 @@ public class employeeController {
     private final EmployeeService employeeService;
 
     public employeeController(EmployeeService employeeService) {
+
         this.employeeService = employeeService;
     }
 
     @PostMapping("/addEmployee")
-    public Employee addEmployee(@RequestBody Employee employee){
+    public Employee addEmployee(@RequestBody Employee employee) {
         log.info("add a new employee");
-        return  employeeService.saveEmployee(employee);
+        return employeeService.saveEmployee(employee);
     }
 
     @PostMapping("/addEmployees")
-    public List<Employee> addEmployees(@RequestBody List<Employee> employees){
+    public List<Employee> addEmployees(@RequestBody List<Employee> employees) {
         log.info("add all employees");
         return employeeService.saveAllEmployees(employees);
     }
-     @GetMapping()
-    public List<Employee> getAllEmployees(){
+
+    @GetMapping()
+    public List<Employee> getAllEmployees() {
         return employeeService.findAllEmployees();
     }
 
     @GetMapping("employeeById/{id}")
-    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id){
-        Employee em =  employeeService.findEmployeeById(id);
-        if (em == null){
+    public ResponseEntity<Employee> getEmployeeById(@PathVariable Long id) {
+        Employee em = employeeService.findEmployeeById(id);
+        if (em == null) {
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }
-        return new ResponseEntity<>(em,HttpStatus.OK);
+        return new ResponseEntity<>(em, HttpStatus.OK);
     }
 
     @GetMapping("/{lastName}")
-    public Employee getEmployeeByLastName(@PathVariable String lastName){
+    public Employee getEmployeeByLastName(@PathVariable String lastName) {
         return employeeService.findEmployeeByLastName(lastName);
     }
 
 
-
     @PutMapping("/update")
-    public Employee updateEmployee(@RequestBody Employee employee){
-      return  employeeService.updateEmployee(employee);
+    public Employee updateEmployee(@RequestBody Employee employee) {
+        return employeeService.updateEmployee(employee);
 
     }
 
     @DeleteMapping("/{id}")
-    public String delEmployeeById(@PathVariable Long id){
+    public String delEmployeeById(@PathVariable Long id) {
         return employeeService.deleteEmployeeById(id);
     }
 
