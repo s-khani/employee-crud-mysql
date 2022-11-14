@@ -56,8 +56,8 @@ public class EmployeeController {
             throw new NotFoundEmployeeException("User Not found");
         }
         Employee entity = employeeService.findEmployeeById(id);
-        EmployeeDto em = employeeConverter.fromEntityToDto(entity);
-        return em;
+        return employeeConverter.fromEntityToDto(entity);
+
 
     }
 
@@ -73,16 +73,11 @@ public class EmployeeController {
 
         Employee entity = employeeConverter.fromDtoToEntity(employee);
         Employee em = employeeService.updateEmployee(id, entity);
-        EmployeeDto updatedEmployee = employeeConverter.fromEntityToDto(em);
+        return employeeConverter.fromEntityToDto(em);
 
-        return updatedEmployee;
 
     }
 
-    @PutMapping()
-    public String putTest() {
-        return "200";
-    }
 
     @DeleteMapping("[/{id}")
     public String delEmployeeById(@PathVariable Long id) {
